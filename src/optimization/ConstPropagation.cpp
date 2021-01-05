@@ -60,7 +60,7 @@ ConstantFP *ConstFolder::computefp(
         break;
     }
 }
-ConstantInt *ConstFolder::compute(CmpInst::CmpOp op, ConstantInt *v1,
+ConstantInt *ConstFolder::compute(FCmpInst::CmpOp op, ConstantInt *v1,
                                 ConstantInt *v2) {
   int lhs = v1->get_value();
   int rhs = v2->get_value();
@@ -139,6 +139,8 @@ void ConstPropagation::run()
                                 instr->replace_all_use_with(ConstFolder(m_).computefp(instr->get_instr_type(), l, r));
                             }
                         }
+                        //TODO:添加比较运算符
+                        //if (instr->is_cmp() || 
                     }
             }
         }
