@@ -13,6 +13,7 @@
 #include <map>
 #include <queue>
 #include <fstream>
+#include <algorithm>
 
 class ActiveVars : public Pass
 {
@@ -22,7 +23,10 @@ public:
     std::string print();
 private:
     Function *func_;
-    std::map<BasicBlock *, std::set<Value *>> live_in, live_out;
+    std::map<BasicBlock *, std::set<Value *>> live_in, live_out,def, use,tempin,tempout,map_def,map_use;
+    std::set<Value *>alldef,alluse;
+    bool need_iterate;
+    std::map<BasicBlock *, std::map<Value *, BasicBlock *>> big_phi;
 };
 
 #endif

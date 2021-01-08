@@ -30,10 +30,6 @@ public:
         Instruction::OpID op,
         ConstantFP *value1,
         ConstantFP *value2);
-    ConstantInt *ConstFolder::compute(CmpInst::CmpOp op, ConstantInt *v1,
-                                ConstantInt *v2);
-    ConstantFP *ConstFolder::compute(FCmpInst::CmpOp op, ConstantFP *v1,
-                                ConstantFP *v2);
     // ...
 private:
     Module *module_;
